@@ -1,9 +1,10 @@
 package br.com.soluevo.loginmicroapplibrary.application.modules.login
 
-import android.app.Activity
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
+import android.view.View.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -64,13 +65,14 @@ class LoginCustomComponent(context: Context, attrs: AttributeSet) : ConstraintLa
         binding.lifecycleOwner = activity
         viewModel = ViewModelProviders.of(activity, viewModelFactory)[LoginViewModel::class.java]
 
-        viewModel?.errorObserver?.observe(activity, Observer {
-            loginCallbackHandler?.onError(context.getString(it.toInt()))
-            showAlert(it)
+        viewModel?.successObserver?.observe(activity, Observer {
+            LoginActivity.loginCallbackHandler?.onSuccess(it)
+            binding.progressBar.visibility = View.GONE
         })
 
         viewModel?.errorObserver?.observe(activity, Observer {
             loginCallbackHandler?.onError(context.getString(it.toInt()))
+            binding.progressBar.visibility = View.GONE
             showAlert(it)
         })
 
@@ -80,21 +82,22 @@ class LoginCustomComponent(context: Context, attrs: AttributeSet) : ConstraintLa
         binding.lifecycleOwner = fragment
         viewModel = ViewModelProviders.of(fragment, viewModelFactory)[LoginViewModel::class.java]
 
-        viewModel = ViewModelProviders.of(fragment, viewModelFactory)[LoginViewModel::class.java]
 
-        viewModel?.errorObserver?.observe(fragment, Observer {
-            loginCallbackHandler?.onError(context.getString(it.toInt()))
-            showAlert(it)
+        viewModel?.successObserver?.observe(fragment, Observer {
+            LoginActivity.loginCallbackHandler?.onSuccess(it)
+            binding.progressBar.visibility = View.GONE
         })
 
         viewModel?.errorObserver?.observe(fragment, Observer {
             loginCallbackHandler?.onError(context.getString(it.toInt()))
+            binding.progressBar.visibility = View.GONE
             showAlert(it)
         })
     }
 
     override fun onPressLoginButton(authRequest: AuthRequestDto) {
         if (validator.validate()) {
+            binding.progressBar.visibility = View.VISIBLE
             viewModel?.authenticate(authRequest)
         }
     }
