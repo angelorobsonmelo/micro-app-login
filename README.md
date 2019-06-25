@@ -58,6 +58,7 @@ dependencies {
 
 # Usage login as component
 
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -75,7 +76,7 @@ dependencies {
 
 </LinearLayout>
 
-
+```
 
 ```Java
 
