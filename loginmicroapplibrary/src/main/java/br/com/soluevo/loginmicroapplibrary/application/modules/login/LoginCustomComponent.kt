@@ -66,7 +66,7 @@ class LoginCustomComponent(context: Context, attrs: AttributeSet) : ConstraintLa
         viewModel = ViewModelProviders.of(activity, viewModelFactory)[LoginViewModel::class.java]
 
         viewModel?.successObserver?.observe(activity, Observer {
-            LoginActivity.loginCallbackHandler?.onSuccess(it)
+            loginCallbackHandler?.onSuccess(it)
             binding.progressBar.visibility = View.GONE
         })
 
@@ -84,7 +84,7 @@ class LoginCustomComponent(context: Context, attrs: AttributeSet) : ConstraintLa
 
 
         viewModel?.successObserver?.observe(fragment, Observer {
-            LoginActivity.loginCallbackHandler?.onSuccess(it)
+            loginCallbackHandler?.onSuccess(it)
             binding.progressBar.visibility = View.GONE
         })
 
