@@ -28,7 +28,6 @@ class MainComponentActivity : AppCompatActivity(),
     }
 
     override fun onError(errorDescription: String) {
-
     }
 
     override fun onDestroy() {
