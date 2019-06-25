@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LoginMicroAppLibrary</string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
+
+    <!--Internet error-->
+    <string name="unauthorized">Incorrect e-mail or password.</string>
+    <string name="internal_error">An internal error occurred.</string>
+    <string name="unknown_error">Unknown error, contact your system administrator</string>
+    <string name="socket_timout_error">Request timed out, please try again.</string>
+    <string name="no_internet_connection_error">No internet connection</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="enter">Enter</string>
+
+</resources>
